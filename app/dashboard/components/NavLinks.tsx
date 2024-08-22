@@ -1,19 +1,31 @@
 "use client";
 import React from "react";
-import { PersonIcon, CrumpledPaperIcon } from "@radix-ui/react-icons";
+import { CrumpledPaperIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import { FaPeopleGroup, FaAward, FaUsers } from "react-icons/fa6";
 
 export default function NavLinks() {
   const pathname = usePathname();
 
   const links = [
     {
+      href: "/dashboard/contests",
+      text: "Promociones",
+      Icon: FaAward,
+    },
+    {
+      href: "/dashboard/participants",
+      text: "Participantes",
+      Icon: FaPeopleGroup,
+    },
+    {
       href: "/dashboard/members",
       text: "Miembros",
-      Icon: PersonIcon,
+      Icon: FaUsers,
     },
+
     {
       href: "/dashboard/todo",
       text: "Todo",

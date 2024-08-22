@@ -1,18 +1,17 @@
 import React from "react";
-import DailogForm from "../DialogForm";
+import DialogForm from "../DialogForm";
 import { Button } from "@/components/ui/button";
 import { Pencil1Icon } from "@radix-ui/react-icons";
-import EditForm from "./EditorForm";
+import EditForm from "./EditForm";
 
-export default function EditMember() {
+export default function EditContest() {
   return (
-    <DailogForm
+    <DialogForm
       id="update-trigger"
-      title="Editar Miembro"
+      title="Editar Promoción"
       Trigger={
         <Button variant="outline">
-          <Pencil1Icon />
-          Editar
+          <Pencil1Icon /> Editar
         </Button>
       }
       form={<EditForm />}

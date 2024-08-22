@@ -77,7 +77,7 @@ export default function AuthForm() {
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input placeholder="Bryant es un tonto" {...field} />
+                  <Input placeholder="correo@sisprotgf.com" {...field} />
                 </FormControl>
 
                 <FormMessage />
@@ -91,7 +91,7 @@ export default function AuthForm() {
               <FormItem>
                 <FormLabel>Contraseña</FormLabel>
                 <FormControl>
-                  <Input placeholder="Rey es gey" {...field} type="password" />
+                  <Input placeholder="******" {...field} type="password" />
                 </FormControl>
                 <FormDescription>
                   {

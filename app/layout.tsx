@@ -26,7 +26,6 @@ export const metadata: Metadata = {
     description: "Build dashboard with next.js and supabase ",
     url: "https://daily-todo-task.vercel.app/",
     siteName: "Sisprot Global Fiber",
-    images: "/og.png",
     type: "website",
   },
   keywords: ["daily web coding", "chensokheng", "dailywebcoding"],
@@ -39,7 +38,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${jost.className} antialiased dark:bg-[#09090B]`}>
+      <body className={`${jost.className} antialiased dark:bg-[#161616]`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

@@ -20,16 +20,14 @@ import { cn } from "@/lib/utils";
 
 const FormSchema = z.object({
   name: z.string().min(2, {
-    message: "El nombre debe tener al menos 2 caracteres.",
+    message: "El nombre debe contener al menos 2 caracteres.",
   }),
 });
 
 export default function BasicForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
-    defaultValues: {
-      name: "",
-    },
+    defaultValues: { name: "" },
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
@@ -51,9 +49,9 @@ export default function BasicForm() {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Display Name</FormLabel>
+              <FormLabel>Nombre de Promoción</FormLabel>
               <FormControl>
-                <Input placeholder="shadcn" {...field} />
+                <Input placeholder="Promoción" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -64,7 +62,7 @@ export default function BasicForm() {
           className="flex gap-2 items-center w-full"
           variant="outline"
         >
-          Actualizar{" "}
+          Actualizar
           <AiOutlineLoading3Quarters
             className={cn(" animate-spin", "hidden")}
           />
