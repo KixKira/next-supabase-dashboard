@@ -1,5 +1,6 @@
 import React from "react";
 import RegisterClient from "./components/create/RegisterClient";
+import Participants from "../participants/page";
 
 export default function Forms() {
   return (
@@ -8,7 +9,7 @@ export default function Forms() {
       <div className="flex gap-2">
         <RegisterClient />
       </div>
-      TablePromotion
+      <Participants />
     </div>
   );
 }

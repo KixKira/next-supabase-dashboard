@@ -4,7 +4,7 @@ import { CrumpledPaperIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import { FaPeopleGroup, FaAward, FaUsers } from "react-icons/fa6";
+import { FaPeopleGroup, FaAward, FaUsers, FaWpforms } from "react-icons/fa6";
 
 export default function NavLinks() {
   const pathname = usePathname();
@@ -25,12 +25,16 @@ export default function NavLinks() {
       text: "Miembros",
       Icon: FaUsers,
     },
-
     {
-      href: "/dashboard/todo",
-      text: "Todo",
-      Icon: CrumpledPaperIcon,
+      href: "/dashboard/forms",
+      text: "Formulario",
+      Icon: FaWpforms,
     },
+    // {
+    //   href: "/dashboard/todo",
+    //   text: "Todo",
+    //   Icon: CrumpledPaperIcon,
+    // },
   ];
 
   return (
