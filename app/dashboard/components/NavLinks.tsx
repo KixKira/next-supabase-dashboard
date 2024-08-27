@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import { FaPeopleGroup, FaAward, FaUsers } from "react-icons/fa6";
+import { FaPeopleGroup, FaAward, FaUsers, FaWpforms } from "react-icons/fa6";
 
 export default function NavLinks() {
   const pathname = usePathname();
