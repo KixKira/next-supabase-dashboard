@@ -1,14 +1,15 @@
-import Table from "@/components/ui/Table";
 import React from "react";
 import ListOfContests from "./ListOfContests";
+import Table from "./ui/Table";
 
 export default function ContestTable() {
   const tableHeader = [
     "Nombre",
     "Código",
-    "Estado",
+    "Página",
     "Fecha de Inicio",
     "Fecha de Fin",
+    "Acciones",
   ];
 
   return (

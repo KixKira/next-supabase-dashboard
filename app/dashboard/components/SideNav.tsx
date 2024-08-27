@@ -3,7 +3,6 @@ import NavLinks from "./NavLinks";
 
 import { cn } from "@/lib/utils";
 import ModeToggle from "../todo/components/ToggleDarkMode";
-import { Button } from "@/components/ui/button";
 import SignOut from "./SignOut";
 
 export default function SideNav() {

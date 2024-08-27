@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "../../public/SGF Logo - Color.svg";
+import Logo from "../../public/Logo.svg";
 
 export default function Home() {
   return (

@@ -1,11 +1,9 @@
-import { Button } from "@/components/ui/button";
 import React from "react";
-import { TrashIcon, Pencil1Icon } from "@radix-ui/react-icons";
 import ListOfMembers from "./ListOfMembers";
-import Table from "@/components/ui/Table";
+import Table from "./ui/Table";
 
 export default function MemberTable() {
-  const tableHeader = ["Nombre", "Rol", "Ingreso", "Estado"];
+  const tableHeader = ["Nombre", "Rol", "Estado", "Ingreso", "Acciones"];
 
   return (
     <Table headers={tableHeader}>
