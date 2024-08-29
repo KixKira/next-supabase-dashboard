@@ -27,6 +27,7 @@ import {
 import { createContest } from "../../actions";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { cn } from "@/lib/utils";
+import { supabase } from "../../../../../supabase-config";
 
 const FormSchema = z.object({
   name: z.string().min(3, {
@@ -57,6 +58,45 @@ export default function CreateForm() {
   const status = ["activo", "inactivo"];
   const type = ["rifa", "sorteo"];
 
+  const createContest = async (data: any) => {
+    try {
+      const { error } = await supabase.from("contest").insert([
+        {
+          name_contest: data.name,
+          code_contest: data.code,
+          state_contest: data.status === "activo",
+          date_start_contest: data.dateStart,
+          date_end_contest: data.dateEnd,
+          URL_contest: data.URL,
+          description_contest: data.description,
+        },
+      ]);
+
+      if (error) {
+        console.error("Error al crear la promoción:", error);
+        toast({
+          title: "Error",
+          description:
+            "No se pudo crear la promoción. Por favor, inténtalo de nuevo.",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Éxito",
+          description: "La promoción se creó correctamente.",
+        });
+      }
+    } catch (err) {
+      console.error("Error inesperado al crear la promoción:", err);
+      toast({
+        title: "Error",
+        description:
+          "Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo.",
+        variant: "destructive",
+      });
+    }
+  };
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -72,20 +112,9 @@ export default function CreateForm() {
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    createContest();
+    createContest(data);
 
     document.getElementById("create-trigger")?.click();
-
-    toast({
-      title: "Ha presentado los siguiente valores:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-[#5E6770] p-4">
-          <code className="text-[#F4F4F4]">
-            {JSON.stringify(data, null, 2)}
-          </code>
-        </pre>
-      ),
-    });
   }
 
   return (

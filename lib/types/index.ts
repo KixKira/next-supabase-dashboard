@@ -8,6 +8,7 @@ export type IPermission = {
     id: string;
     name: string;
     created_at: string;
+    email: string;
   };
 };
 

@@ -1,11 +1,10 @@
 import React from "react";
-import { TrashIcon } from "@radix-ui/react-icons";
-import { Button } from "@/components/ui/button";
 import EditMember from "./edit/EditMember";
 import { cn } from "@/lib/utils";
 import { useUserStore } from "@/lib/store/user";
 import { readMembers } from "../actions";
 import { IPermission } from "@/lib/types";
+import DeleteMember from "./DeleteMember";
 
 export default async function ListOfMembers() {
   const { data: permissions } = await readMembers();
@@ -55,15 +54,10 @@ export default async function ListOfMembers() {
               </span>
             </div>
             <h1>{new Date(permission.created_at).toDateString()}</h1>
-            {isAdmin && (
-              <div className="flex gap-2 items-center">
-                <Button variant="outline">
-                  <TrashIcon />
-                  Eliminar
-                </Button>
-                <EditMember />
-              </div>
-            )}
+            <div className="flex gap-2 items-center">
+              {isAdmin && <DeleteMember user_id={permission.member.id} />}
+              <EditMember isAdmin={isAdmin} permission={permission} />
+            </div>
           </div>
         );
       })}
