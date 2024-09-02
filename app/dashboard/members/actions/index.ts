@@ -101,6 +101,53 @@ export async function updateMemberAdvancedById(
   }
 }
 
+export async function updateMemberAccountById(
+  user_id: string,
+  data: {
+    email: string;
+    password?: string | undefined;
+    confirm?: string | undefined;
+  }
+) {
+  const { data: userSession } = await readUserSession();
+  if (userSession.session?.user.user_metadata.role !== "admin") {
+    return JSON.stringify({
+      error: { message: "No estás autorizado para realizar esta acción." },
+    });
+  }
+
+  let updateObject: {
+    email: string;
+    password?: string | undefined;
+  } = {
+    email: data.email,
+  };
+
+  if (data.password) {
+    updateObject["password"] = data.password;
+  }
+
+  const supabaseAdmin = await createSupbaseAdmin();
+
+  const updateResult = await supabaseAdmin.auth.admin.updateUserById(
+    user_id,
+    updateObject
+  );
+
+  if (updateResult.error?.message) {
+    return JSON.stringify(updateResult);
+  } else {
+    const supabase = await createSupbaseServerClient();
+    const result = await supabase
+      .from("member")
+      .update({ email: data.email })
+      .eq("id", user_id);
+    revalidatePath("/dashboard/members");
+
+    return JSON.stringify(result);
+  }
+}
+
 export async function deleteMemberById(user_id: string) {
   const { data: userSession } = await readUserSession();
   if (userSession.session?.user.user_metadata.role !== "admin") {
